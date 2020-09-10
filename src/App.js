@@ -22,7 +22,14 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const data = {
+      title: "Virtual Keyboard Test",
+      url: "https://github.com/JadsonBruno/concepts-node/blob/master/src/app.js",
+      techs: ["VueJS", "Node.js", "Redis"]
+    };
+
+    const repository = await api.post('/repositories', data);
+    setRepositories([...repositories, repository.data]);
   }
 
   async function handleRemoveRepository(id) {
